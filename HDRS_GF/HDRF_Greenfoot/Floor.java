@@ -18,15 +18,11 @@ public class Floor extends Actor
      */
     public void act() 
     {  
-        if(id == 15){
-            setImage("img/Dirt.png");
-        }
-        
-            
-       
-        
-       
-        
-        // Add your action code here.
+        switch(id){
+        case 36:    setImage("img/Grass.png");
+                    break;
+        case 15:    setImage("img/Dirt.png");
+                    break;
+        }       
     }    
 }
