@@ -42,7 +42,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixel
         
-        super(1024,640, 1);
+        super(1000,640, 1);
         
         
        
