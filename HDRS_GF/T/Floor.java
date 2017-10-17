@@ -13,7 +13,9 @@ public class Floor extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
-    { new GreenfootImage("Dirt.png");
+    {  
+        setImage("Dirt.png");
+        
         
        
         

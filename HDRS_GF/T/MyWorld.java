@@ -15,16 +15,18 @@ public class MyWorld extends World
      */
     
     private Floor[][] array = new Floor[1000][1000];
+    private ObjectId [][] array = new ObjectId
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixel
         
-        super(1024,640, 1); 
+        super(1024,640, 1);
+        
         
        
-        for(int y = 0;y<=640;y += 32){
-            for (int x = 0; x<=640; x += 32){
+        for(int y = 16;y<=640;y += 32){
+            for (int x = 16; x<=640; x += 32){
                 Floor temp = new Floor();
                 array[x][y] = temp;
                 addObject(temp ,x,y);
