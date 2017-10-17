@@ -8,14 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Floor extends Actor
 {
+    int id;
+    public Floor(int idAusArray){
+        id = idAusArray;
+    }
     /**
      * Act - do whatever the Floor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {  
-        setImage("Dirt.png");
+        if(id == 36){
+            setImage("Dirt.png");
+        }
         
+            
+       
         
        
         

@@ -5,4 +5,6 @@ comment1.params=
 comment1.target=MyWorld()
 comment2.params=
 comment2.target=Floor[][]\ getAllFloors()
-numComments=3
+comment3.params=x\ y
+comment3.target=int\ getObjectId(int,\ int)
+numComments=4
