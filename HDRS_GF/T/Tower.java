@@ -14,6 +14,6 @@ public class Tower extends Actor
      */
     public void act() 
     {
-        setImage("Tower1.png");
+        setImage("img/Tower1.png");
     }    
 }

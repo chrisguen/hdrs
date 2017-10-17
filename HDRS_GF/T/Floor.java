@@ -19,7 +19,7 @@ public class Floor extends Actor
     public void act() 
     {  
         if(id == 15){
-            setImage("Dirt.png");
+            setImage("img/Dirt.png");
         }
         
             
