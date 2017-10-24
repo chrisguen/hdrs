@@ -22,14 +22,14 @@ public class Tower extends Actor
         }
     }
     private boolean isGrabbed, dragAllowed = true;
-    /**private void getFloorId(int x, int y){
-        if(isTouching(Floor.class)){
+    private void getFloorId(int x, int y){
+        if(true){
             //System.out.println(tempWorld.getObjectId((x-16)/32,(y-16)/32));
             //return;
             //MyWorld temp = new MyWorld();
             return; //temp.getObjectId((x-16)/32,(y-16)/32);
         }
-    }**/
+    }
     public void act() 
     {
         
@@ -53,7 +53,7 @@ public class Tower extends Actor
             // follow the mouse
             MouseInfo mi = Greenfoot.getMouseInfo();
             setLocation(mi.getX()-(mi.getX()%16), mi.getY()-mi.getY()%16);
-            //getFloorId(mi.getX(),mi.getY());
+            //getFloorId(mi.getX(),mi.getY()); 
             return;
         }
         // check for mouse button release
