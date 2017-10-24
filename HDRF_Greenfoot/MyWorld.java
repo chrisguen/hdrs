@@ -43,9 +43,10 @@ public class MyWorld extends World
         // Create a new world with 1000x640 cells with a cell size of 1x1 pixel
         
         super(1000,640, 1);
-        
-        
-       
+        Tower test = new Tower(1);
+        Tower test2 = new Tower(0);
+        addObject(test, 700,250); 
+        addObject(test2, 700, 400);
         for(int y = 16;y<=640;y += 32){
             for (int x = 16; x<=640; x += 32){
                 Floor temp = new Floor(ObjectId[(y-16)/32][(x-16)/32]);
