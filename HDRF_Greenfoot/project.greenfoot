@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue Oct 24 10:29:12 CEST 2017
+#Tue Oct 24 13:18:39 CEST 2017
 readme.name=@README
 target2.name=Tower
 dependency1.from=MyWorld
@@ -37,16 +37,16 @@ mainWindow.width=1920
 target1.typeParameters=
 dependency2.from=MyWorld
 target2.width=80
-mainWindow.y=24
-target1.width=80
 mainWindow.height=1032
-target3.width=80
+target1.width=80
+mainWindow.y=24
 mainWindow.x=0
+target3.width=80
 editor.fx.0.y=132
 editor.fx.0.x=785
 readme.width=47
-target3.showInterface=false
 target2.type=ClassTarget
+target3.showInterface=false
 world.lastInstantiated=MyWorld
 class.Tower.image=bathroom-tile.jpg
 dependency1.type=UsesDependency

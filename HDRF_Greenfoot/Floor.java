@@ -12,6 +12,9 @@ public class Floor extends Actor
     public Floor(int idAusArray){
         id = idAusArray;
     }
+    /*private int getId(){
+        return id;
+    }*/
     /**
      * Act - do whatever the Floor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,6 +26,6 @@ public class Floor extends Actor
                     break;
         case 15:    setImage("img/Dirt.png");
                     break;
-        }       
+        }
     }    
 }
