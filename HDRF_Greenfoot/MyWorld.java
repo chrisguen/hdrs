@@ -15,7 +15,7 @@ public class MyWorld extends World
      */
     
     private Floor[][] array = new Floor[1000][1000];
-    private  int[][] ObjectId = new  int[][]{
+    private static  int[][] ObjectId = new  int[][]{
     {36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36},
     {36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36},
     {36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36},
@@ -60,7 +60,8 @@ public class MyWorld extends World
     public Floor[][] getAllFloors(){
         return array;
     }
-    public int getObjectId(int x, int y){
+    public static int getObjectId(int x, int y){
         return ObjectId[x][y];
     }
+    
 }

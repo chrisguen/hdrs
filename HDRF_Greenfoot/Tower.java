@@ -21,20 +21,17 @@ public class Tower extends Actor
             break;
         }
     }
+    
     private boolean isGrabbed, dragAllowed = true;
     private void getFloorId(int x, int y){
         if(true){
-            //System.out.println(tempWorld.getObjectId((x-16)/32,(y-16)/32));
-            //return;
-            //MyWorld temp = new MyWorld();
+            System.out.println(MyWorld.getObjectId((x-16)/32,(y-16)/32));
+            //System.out.println((x-16)/32+" "+(y-16)/32);
             return; //temp.getObjectId((x-16)/32,(y-16)/32);
         }
     }
     public void act() 
     {
-        
- 
-            /* in the 'act' method in the class of the Actor object to be dragged */
             // check for initial pressing down of mouse button
         if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed)
         {
@@ -52,14 +49,18 @@ public class Tower extends Actor
         {
             // follow the mouse
             MouseInfo mi = Greenfoot.getMouseInfo();
-            setLocation(mi.getX()-(mi.getX()%16), mi.getY()-mi.getY()%16);
-            //getFloorId(mi.getX(),mi.getY()); 
+            setLocation(mi.getX()-(mi.getX()%32)-16,mi.getY()-(mi.getY()%32)-16);
+            //System.out.println(mi.getX()/32 + " "+ mi.getY()/32);
             return;
         }
         // check for mouse button release
         if (Greenfoot.mouseDragEnded(this) && isGrabbed)
         {
             // release the object
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            if(mi.getX()<608){
+                getFloorId(mi.getX(),mi.getY());
+            }
             isGrabbed = false;
             return;
         }
