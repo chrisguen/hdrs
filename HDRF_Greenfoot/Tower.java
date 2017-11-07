@@ -44,11 +44,14 @@ public class Tower extends Actor
         }
         // check for actual dragging of the object
         if ((Greenfoot.mouseDragged(this)) && isGrabbed)
-        {
+         {
             // follow the mouse
             MouseInfo mi = Greenfoot.getMouseInfo();
-            setLocation(mi.getX()-(mi.getX()%32)-16,mi.getY()-(mi.getY()%32)-16);
-            return;
+            int xCoordinate = mi.getX()-(mi.getX()%32)-16;
+            int yCoordinate = mi.getY()-(mi.getY()%32)-16;
+                if ((xCoordinate>0 && yCoordinate >0) && (yCoordinate<640)){
+                    setLocation(xCoordinate,yCoordinate);
+                }
         }
         // check for mouse button release
         if (Greenfoot.mouseDragEnded(this) && isGrabbed)
