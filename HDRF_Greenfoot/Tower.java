@@ -12,7 +12,7 @@ public class Tower extends Actor
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public int tId;
+    public int tId, price;
     Tower(int id){
         switch(id){
             case 0: setImage("img/TowerRed.png");   
@@ -24,10 +24,18 @@ public class Tower extends Actor
         tId = id;
     }
     int x, y;
-    private boolean isGrabbed, dragAllowed = true;
-    public void act() 
+    private boolean isGrabbed, dragAllowed, buyAllowed;
+   
+   public void act() 
     {
-            // check for initial pressing down of mouse button
+        System.out.println(MyWorld.getMoney());
+        // check for initial pressing down of mouse button
+        if(MyWorld.getMoney()>=MyWorld.getTowerPrice(tId)){
+            dragAllowed = true;
+        }else{
+            dragAllowed = false;
+        }
+        
         if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed)
         {
             // grab the object
@@ -39,7 +47,13 @@ public class Tower extends Actor
             y = mi.getY();
             world.removeObject(this);
             world.addObject(this, mi.getX(), mi.getY());
-            
+            switch(tId){
+                
+                case 0: Tower tower0 = new Tower(tId);
+                        world.addObject(tower0, MyWorld.t0x,MyWorld.t0y);
+                case 1: Tower tower1 = new Tower(tId);
+                        world.addObject(tower1, MyWorld.t1x,MyWorld.t1y);
+            }
             return;
         }
         // check for actual dragging of the object
@@ -60,22 +74,19 @@ public class Tower extends Actor
             MouseInfo mi = Greenfoot.getMouseInfo();
             if(mi.getX()<608){
                 int floorId = MyWorld.getObjectId((this.getX()-16)/32,(this.getY()-16)/32);
-                System.out.println(((this.getX()-16)/32));
-                System.out.println(((this.getY()-16)/32));
+                //System.out.println(((this.getX()-16)/32));
+                //System.out.println(((this.getY()-16)/32));
                 if(floorId == 15){
                     World world = getWorld();
                     world.removeObject(this);
                     Tower tower = new Tower(tId);
-                    System.out.println("tID: " + tId + " | x,y: " + x + "-" + y + " | floortype: " + floorId);
+                    MyWorld.addMoney(-60);
+                    //System.out.println("Deleted: tID: " + tId + " | x,y: " + x + "-" + y + " | floortype: " + floorId);
                 }
-                          System.out.println("tID: " + tId + " | x,y: " + x + "-" + y + " | floortype2: " + floorId);
+                //System.out.println("tID: " + tId + " | x,y: " + x + "-" + y + " | floortype2: " + floorId);
             } 
             isGrabbed = false;
-            World world = getWorld();
-  
-            //Tower tower = new Tower(tId);
-            //world.addObject(tower,700,400);
+
         }
-        //System.out.println(x + " "+ y);
     }    
 }
