@@ -11,16 +11,6 @@ public class Floor extends Actor
     int id;
     public Floor(int idAusArray){
         id = idAusArray;
-    }
-    /*private int getId(){
-        return id;
-    }*/
-    /**
-     * Act - do whatever the Floor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {  
         switch(id){
         case 36:    setImage("img/Grass.png");
                     break;
@@ -31,5 +21,16 @@ public class Floor extends Actor
         case 1:    setImage("img/Dirt.png");
                     break;
         }
+    }
+    /*private int getId(){
+        return id;
+    }*/
+    /**
+     * Act - do whatever the Floor wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {  
+        
     }    
 }
