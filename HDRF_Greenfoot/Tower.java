@@ -35,7 +35,9 @@ public class Tower extends Actor
         }else{
             dragAllowed = false;
         }
-        
+        //if (Greenfoot.mouseMoved(this)) getImage().setTransparency(100);
+        //if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) getImage().setTransparency(255);
+
         if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed && !placed)
         {
             // grab the object
@@ -67,11 +69,12 @@ public class Tower extends Actor
             int yCoordinate = mi.getY()-(mi.getY()%32)-16;
                 if ((xCoordinate>0 && yCoordinate >0) && (yCoordinate<640)){
                     setLocation(xCoordinate,yCoordinate);
-                    /*int floorId = MyWorld.getObjectId((this.getX()-16)/32,(this.getY()-16)/32);
-                    if(floorId == 15){
-                        
-                        
-                    }*/
+                    if((mi.getX()<608)){
+                        int floorId = MyWorld.getObjectId((this.getX()-16)/32,(this.getY()-16)/32);
+                        if(floorId == 15){
+                            getImage().setTransparency(100);
+                        }else getImage().setTransparency(255);
+                    }
                 }
         }
         // check for mouse button release
