@@ -26,6 +26,10 @@ public class Floor extends Actor
                     break;
         case 15:    setImage("img/Dirt.png");
                     break;
+        case 0:    setImage("img/Dirt.png");
+                    break;
+        case 1:    setImage("img/Dirt.png");
+                    break;
         }
     }    
 }

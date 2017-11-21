@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Color;
 /**
  * Write a description of class Tower here.
  * 
@@ -24,11 +24,11 @@ public class Tower extends Actor
         tId = id;
     }
     int x, y;
-    private boolean isGrabbed, dragAllowed, buyAllowed;
+    private boolean isGrabbed, dragAllowed, buyAllowed, placed;
    
    public void act() 
     {
-        System.out.println(MyWorld.getMoney());
+        //System.out.println(MyWorld.getMoney());
         // check for initial pressing down of mouse button
         if(MyWorld.getMoney()>=MyWorld.getTowerPrice(tId)){
             dragAllowed = true;
@@ -36,7 +36,7 @@ public class Tower extends Actor
             dragAllowed = false;
         }
         
-        if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed)
+        if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed && !placed)
         {
             // grab the object
             isGrabbed = true;
@@ -51,8 +51,10 @@ public class Tower extends Actor
                 
                 case 0: Tower tower0 = new Tower(tId);
                         world.addObject(tower0, MyWorld.t0x,MyWorld.t0y);
+                        break;
                 case 1: Tower tower1 = new Tower(tId);
                         world.addObject(tower1, MyWorld.t1x,MyWorld.t1y);
+                        break;
             }
             return;
         }
@@ -65,6 +67,11 @@ public class Tower extends Actor
             int yCoordinate = mi.getY()-(mi.getY()%32)-16;
                 if ((xCoordinate>0 && yCoordinate >0) && (yCoordinate<640)){
                     setLocation(xCoordinate,yCoordinate);
+                    /*int floorId = MyWorld.getObjectId((this.getX()-16)/32,(this.getY()-16)/32);
+                    if(floorId == 15){
+                        
+                        
+                    }*/
                 }
         }
         // check for mouse button release
@@ -80,13 +87,14 @@ public class Tower extends Actor
                     World world = getWorld();
                     world.removeObject(this);
                     Tower tower = new Tower(tId);
+                    //MyWorld.newTower(tId);
+                }else{
                     MyWorld.addMoney(-60);
-                    //System.out.println("Deleted: tID: " + tId + " | x,y: " + x + "-" + y + " | floortype: " + floorId);
                 }
                 //System.out.println("tID: " + tId + " | x,y: " + x + "-" + y + " | floortype2: " + floorId);
             } 
             isGrabbed = false;
-
+            placed = true;
         }
     }    
 }

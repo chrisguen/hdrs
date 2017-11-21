@@ -15,6 +15,9 @@ public class Money extends Actor
     private GreenfootImage background = new GreenfootImage("img/menu.png");
     public void act() 
     {
+        if(Greenfoot.mouseClicked(this)){
+            plus200Money();
+        }
         getImage().scale(119,68);
         getImage().clear();
         //getImage().drawImage(background, 0, 0);
@@ -22,4 +25,8 @@ public class Money extends Actor
         getImage().drawString("Lives: "+4, 10, 35);
         getImage().drawString("Money: "+ MyWorld.getMoney(), 10, 50);
     }    
+    public void plus200Money(){
+        MyWorld.addMoney(200);
+    }
+   
 }
