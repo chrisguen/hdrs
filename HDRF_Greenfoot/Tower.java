@@ -99,5 +99,6 @@ public class Tower extends Actor
             isGrabbed = false;
             placed = true;
         }
+        getObjectsInRange(20,Creep.class);
     }    
 }

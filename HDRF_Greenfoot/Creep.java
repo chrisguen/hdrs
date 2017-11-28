@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Creep extends Actor
 {
     int cId;
+    int speed=1;
     Creep(int i){
         cId = i;
         switch(cId){
@@ -24,9 +25,11 @@ public class Creep extends Actor
      */
     public void act() 
     {
+        System.out.println(((this.getX()-16)/32)+" "+((this.getY()-16)/32));
+        System.out.println("Rotation: "+getRotation());
         switch(getRotation()){
             case 0:     if(MyWorld.getObjectId(((this.getX()-16)/32)+1,(this.getY()-16)/32) == 15){
-                            move(1);
+                            move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)+1) == 15){
                             turn(90);
@@ -39,7 +42,7 @@ public class Creep extends Actor
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
             case 90:    if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32+1) == 15){
-                            move(1);
+                            move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32-1),((this.getY()-16)/32)) == 15){
                             turn(90);
@@ -52,7 +55,7 @@ public class Creep extends Actor
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
                       
             case 180:   if(MyWorld.getObjectId(((this.getX()-16)/32)-1,(this.getY()-16)/32) == 15){
-                            move(1);
+                            move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32-1)) == 15){
                             turn(90);
@@ -63,8 +66,8 @@ public class Creep extends Actor
                             System.out.println("180 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
-            case 270:   if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32-1) == 15){
-                            move(1);
+            case 270:   if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32) == 15){
+                            move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32+1),((this.getY()-16)/32)) == 15){
                             turn(90);
@@ -80,6 +83,7 @@ public class Creep extends Actor
         //System.out.println("x+1 y "+MyWorld.getObjectId(((this.getX()-16)/32+1),(this.getY()-16)/32));
         //System.out.println("x y+1 "+MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32+1));
         //System.out.println("x-1 y "+MyWorld.getObjectId(((this.getX()-16)/32-1),(this.getY()-16)/32));
+        System.out.println(((this.getX()-16)/32)+" "+((this.getY()-16)/32));
         System.out.println("Rotation: "+getRotation());
     }
 }
