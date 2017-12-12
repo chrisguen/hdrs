@@ -11,7 +11,14 @@ public class Floor extends Actor
 {
     static int timer = 0;
     static int waves = 20;
-    static int[][] creepCount = new int[waves][20];
+    static  int[][] creepCount = new  int[][]{
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0}
+    };
     int id;
     public Floor(int idAusArray){
         id = idAusArray;
