@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+import java.util.*;
 /**
  * Write a description of class Tower here.
  * 
@@ -28,6 +29,10 @@ public class Tower extends Actor
    
    public void act() 
     {
+        List creepsInRange = getObjectsInRange(40,Creep.class);
+        if(creepsInRange.get(1)!=null){
+            
+        }
         //System.out.println(MyWorld.getMoney());
         // check for initial pressing down of mouse button
         if(MyWorld.getMoney()>=MyWorld.getTowerPrice(tId)){
@@ -99,6 +104,10 @@ public class Tower extends Actor
             isGrabbed = false;
             placed = true;
         }
-        getObjectsInRange(20,Creep.class);
-    }    
+        if(true){
+            //turnTowards(.getX,.getY);
+            //obj = getOneObjectAtOffset(20,20,Creep.class);
+            //getWorld().addObject(new Projectile(), getX(), getY());
+        };
+    }
 }

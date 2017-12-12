@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Creep extends Actor
 {
     int cId;
-    int speed=1;
+    int speed=2;
+    int health = 100;
     Creep(int i){
         cId = i;
         switch(cId){
@@ -17,6 +18,13 @@ public class Creep extends Actor
                     break;
             case 1: setImage("img/SoldierGreen.png");
                     break;
+        }
+    }
+    public void hit(int dmg){
+        health =- dmg;
+        if(health<1){
+            World world = getWorld();
+            world.removeObject(this);
         }
     }
     /**
@@ -28,7 +36,7 @@ public class Creep extends Actor
         System.out.println(((this.getX()-16)/32)+" "+((this.getY()-16)/32));
         System.out.println("Rotation: "+getRotation());
         switch(getRotation()){
-            case 0:     if(MyWorld.getObjectId(((this.getX()-16)/32)+1,(this.getY()-16)/32) == 15){
+            case 0:     if(MyWorld.getObjectId(((this.getX()-16)/32+1),(this.getY()-16)/32) == 15){
                             move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)+1) == 15){
@@ -54,7 +62,7 @@ public class Creep extends Actor
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
                       
-            case 180:   if(MyWorld.getObjectId(((this.getX()-16)/32)-1,(this.getY()-16)/32) == 15){
+            case 180:   if(MyWorld.getObjectId(((this.getX()+15)/32)-1,(this.getY()-16)/32) == 15){
                             move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32-1)) == 15){
@@ -66,7 +74,7 @@ public class Creep extends Actor
                             System.out.println("180 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
-            case 270:   if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32) == 15){
+            case 270:   if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()+15)/32-1) == 15){
                             move(speed);
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32+1),((this.getY()-16)/32)) == 15){
