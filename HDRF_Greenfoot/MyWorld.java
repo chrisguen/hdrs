@@ -13,6 +13,10 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    private static int lives = 20;
+    
+    private static int wave = 1;
+    
     private static int money = 200;
     
     public static int t0x = 700;
@@ -62,7 +66,6 @@ public class MyWorld extends World
         addObject(t2desc,800,410);
         newTower(0);
         newTower(1);      
-        //addObject(c1,800 ,144);
         for(int y = 16;y<=640;y += 32){
             for (int x = 16; x<=640; x += 32){
                 Floor temp = new Floor(ObjectId[(y-16)/32][(x-16)/32]);
@@ -72,12 +75,17 @@ public class MyWorld extends World
                 //System.out.println(x +" " + y)
             }
         }
-        Creep c1 = new Creep(0);
-        addObject(c1,16 ,144);
-        Bullet bl = new Bullet();
-        addObject(bl, 40, 180);
     }
     
+    public static int getWave(){
+        return wave;
+    }
+    public static void minusLive(int l){
+        lives -= l;
+    }
+    public static int getLives(){
+        return lives;
+    }
     public Floor[][] getAllFloors(){
         return array;
     }

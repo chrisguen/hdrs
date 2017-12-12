@@ -13,10 +13,12 @@ public class Tower extends Actor
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public int tId, price;
+    public int tId, price, tmpCreepX, tmpCreepY;
+    int timer=0;
+    byte test = 0;
     Tower(int id){
         switch(id){
-            case 0: setImage("img/TowerRed.png");   
+            case 0: setImage("img/TowerRed90.png");   
             break;
    
             case 1: setImage("img/TowerGreen.png");
@@ -27,13 +29,34 @@ public class Tower extends Actor
     int x, y;
     private boolean isGrabbed, dragAllowed, buyAllowed, placed;
    
-   public void act() 
-    {
-        List creepsInRange = getObjectsInRange(40,Creep.class);
+    public void act() 
+      {
+        boolean d = false;
+        timer = timer + 2;
+        List creepsInRange = getObjectsInRange(100,Creep.class);
+        test ++;
+        if (timer % 100 == 0){
+            d = true;
+        }else{
+            d=false;
+        }
         if(placed && creepsInRange.isEmpty()==false){
-            if(creepsInRange.get(0)!=null){
-                Bullet b = new Bullet();
-                
+            if(d && placed && creepsInRange.get(0)!=null){
+                Creep temp = (Creep)creepsInRange.get(0);
+                tmpCreepX = temp.getX();
+                tmpCreepY = temp.getY();
+                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation());
+                World world = getWorld();
+                world.addObject(b,this.getX(),this.getY());
+                //System.out.println("NEW BULLET at: "+tmpCreepX +" "+ tmpCreepY);
+            }
+        }
+        if(placed && creepsInRange.isEmpty()==false){
+            if(placed && creepsInRange.get(0)!=null){
+                Creep temp = (Creep)creepsInRange.get(0);
+                tmpCreepX = temp.getX();
+                tmpCreepY = temp.getY();
+                turnTowards(tmpCreepX,tmpCreepY);
             }
         }
         //System.out.println(MyWorld.getMoney());
@@ -107,10 +130,5 @@ public class Tower extends Actor
             isGrabbed = false;
             placed = true;
         }
-        if(true){
-            //turnTowards(.getX,.getY);
-            //obj = getOneObjectAtOffset(20,20,Creep.class);
-            //getWorld().addObject(new Projectile(), getX(), getY());
-        };
     }
 }

@@ -15,7 +15,13 @@ public class Bullet extends Actor
         speed = s;
         delay = dl;
     }
-    Bullet(){
+    Bullet(int tx, int ty, int tmp){
+        speed = 7;
+        id = 0;
+        int x = tx;
+        int y = ty;
+        //turnTowards(x,y);
+        setRotation(tmp);
     }
     /**
      * Act - do whatever the Bullet wants to do. This method is called whenever
@@ -23,14 +29,15 @@ public class Bullet extends Actor
      */
     public void act() 
     {
-        id = 0;
         switch(id){
             case 0: setImage("img/bullet1.png");
         }
         move(speed);
-        if(this.isTouching(Creep.class)||isAtEdge()){
+        if(isAtEdge()){
             World world = getWorld();
             world.removeObject(this);
+            //Creep temp = (Creep)
+            //System.out.println(getRotation());
         }
     }    
 }
