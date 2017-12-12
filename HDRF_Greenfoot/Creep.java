@@ -27,6 +27,7 @@ public class Creep extends Actor
             world.removeObject(this);
         }
     }
+   
     /**
      * Act - do whatever the Creep wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -74,6 +74,8 @@ public class MyWorld extends World
         }
         Creep c1 = new Creep(0);
         addObject(c1,16 ,144);
+        Bullet bl = new Bullet();
+        addObject(bl, 40, 180);
     }
     
     public Floor[][] getAllFloors(){

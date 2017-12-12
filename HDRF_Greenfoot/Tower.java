@@ -30,8 +30,9 @@ public class Tower extends Actor
    public void act() 
     {
         List creepsInRange = getObjectsInRange(40,Creep.class);
-        if(creepsInRange.isEmpty()==false){
+        if(placed && creepsInRange.isEmpty()==false){
             if(creepsInRange.get(0)!=null){
+                Bullet b = new Bullet();
                 
             }
         }
