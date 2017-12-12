@@ -30,8 +30,10 @@ public class Tower extends Actor
    public void act() 
     {
         List creepsInRange = getObjectsInRange(40,Creep.class);
-        if(creepsInRange.get(1)!=null){
-            
+        if(creepsInRange.isEmpty()==false){
+            if(creepsInRange.get(0)!=null){
+                
+            }
         }
         //System.out.println(MyWorld.getMoney());
         // check for initial pressing down of mouse button
