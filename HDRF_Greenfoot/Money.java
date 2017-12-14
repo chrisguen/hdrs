@@ -24,7 +24,7 @@ public class Money extends Actor
         getImage().drawString("Wave: "+MyWorld.getWave(), 10, 20);
         getImage().drawString("Lives: "+ MyWorld.getLives(), 10, 35);
         getImage().drawString("Money: "+ MyWorld.getMoney(), 10, 50);
-        getImage().drawString("x: "+ Starter.isStart(), 10, 65);
+        getImage().drawString("start: "+ Starter.isStart(), 10, 65);
     }    
     public void plus200Money(){
         MyWorld.addMoney(200);

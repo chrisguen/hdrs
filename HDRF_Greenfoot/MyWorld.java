@@ -61,6 +61,8 @@ public class MyWorld extends World
         Money moneyTest = new Money(money);
         TowerDesc t1desc = new TowerDesc(0);
         TowerDesc t2desc = new TowerDesc(1);
+        Starter s = new Starter();
+        addObject(s,800,500);
         addObject(moneyTest, 700,200);
         addObject(t1desc,800,260);
         addObject(t2desc,800,410);

@@ -53,31 +53,32 @@ public class Floor extends Actor
                                 Creep c1 = new Creep(0);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[0][0] -= 1;
-                                System.out.println("Spawn crep 1");
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
                             else if(creepCount[0][1]>0){
                                 Creep c1 = new Creep(1);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[0][1] -= 1;
-                                System.out.println("Spawn crep 2");
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
                             else if(creepCount[0][2]>0){
                                 Creep c1 = new Creep(2);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[0][2] -= 1;
-                                System.out.println("Spawn crep 3");
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
                             else if(creepCount[0][3]>0){
                                 Creep c1 = new Creep(3);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[0][3] -= 1;
-                                System.out.println("Spawn crep 4");
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }else{
                                 spawned = true;
+                                break;
                             }
                         }
                case 2: if(timer%60==0){
@@ -85,25 +86,31 @@ public class Floor extends Actor
                                 Creep c1 = new Creep(0);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[1][0] -= 1;
-                                System.out.println("Spawn crep XXX");
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
-                            if(creepCount[1][1]>0){
+                            else if(creepCount[1][1]>0){
                                 Creep c1 = new Creep(1);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[1][1] -= 1;
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
-                            if(creepCount[1][2]>0){
+                            else if(creepCount[1][2]>0){
                                 Creep c1 = new Creep(2);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[1][2] -= 1;
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
                                 break;
                             }
-                            if(creepCount[1][3]>0){
+                            else if(creepCount[1][3]>0){
                                 Creep c1 = new Creep(3);
                                 world.addObject(c1,getX(),getY());
                                 creepCount[1][3] -= 1;
+                                System.out.println("Wave: "+MyWorld.getWave()+", crep 0");
+                                break;
+                            }else{
+                                spawned = false;
                                 break;
                             }
                         }
@@ -125,7 +132,8 @@ public class Floor extends Actor
                                 world.addObject(c1,getX(),getY());
                             }
                         }*/
-            }
+
+           }
             List objects = world.getObjects(Creep.class);
             if(objects.isEmpty()&&spawned&&Starter.isStart()){
                 MyWorld.nextWave();
