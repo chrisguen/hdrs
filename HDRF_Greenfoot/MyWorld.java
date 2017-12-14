@@ -77,6 +77,9 @@ public class MyWorld extends World
         }
     }
     
+    public static void nextWave(){
+        wave++;
+    }
     public static int getWave(){
         return wave;
     }

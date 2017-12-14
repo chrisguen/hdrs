@@ -11,8 +11,8 @@ public class Creep extends Actor
     int cId;
     int speed;
     int health;
-    float amouredResistance;
-    float unamouredResistance;
+    float vehicleResistance;
+    float Resistance;
     int moneyDropped;
     
     Creep(int i){
@@ -20,9 +20,9 @@ public class Creep extends Actor
         speed = 1;
         health = 100;
         switch(cId){
-            case 0: setImage("img/SoldierGrey.png");
+            case 0: setImage("img/soldier1.png");
                     break;
-            case 1: setImage("img/SoldierGreen.png");
+            case 1: setImage("img/soldier2.png");
                     break;
         }
     }
@@ -30,8 +30,8 @@ public class Creep extends Actor
         cId = i;
         health = h;
         speed = s;
-        amouredResistance = ar;
-        unamouredResistance = ur;
+        vehicleResistance = ar;
+        Resistance = ur;
         moneyDropped = md;
     }
     public void hit(int dmg){
@@ -63,11 +63,11 @@ public class Creep extends Actor
                              break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)+1) == 15){
                             turn(90);
-                            System.out.println("0 turn 90");
+                            //System.out.println("0 turn 90");
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)-1) == 15){
                             turn(-90);
-                            System.out.println("0 turn -90");
+                            //System.out.println("0 turn -90");
                             break;
                         
                         }else{
@@ -80,11 +80,11 @@ public class Creep extends Actor
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32-1),((this.getY()-16)/32)) == 15){
                             turn(90);
-                            System.out.println("90 turn 90");
+                            //System.out.println("90 turn 90");
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32+1),((this.getY()-16)/32)) == 15){
                             turn(-90);
-                            System.out.println("90 turn -90");
+                            //System.out.println("90 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
                       
@@ -93,11 +93,11 @@ public class Creep extends Actor
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32-1)) == 15){
                             turn(90);
-                            System.out.println("180 turn 90");
+                            //System.out.println("180 turn 90");
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32+1)) == 15){
                             turn(-90);
-                            System.out.println("180 turn -90");
+                            //System.out.println("180 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
             case 270:   if(MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()+15)/32-1) == 15){
@@ -105,11 +105,11 @@ public class Creep extends Actor
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32+1),((this.getY()-16)/32)) == 15){
                             turn(90);
-                            System.out.println("270 turn 90");
+                            //System.out.println("270 turn 90");
                             break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32-1),((this.getY()-16)/32)) == 15){
                             turn(-90);
-                            System.out.println("270 turn -90");
+                            //System.out.println("270 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
         }

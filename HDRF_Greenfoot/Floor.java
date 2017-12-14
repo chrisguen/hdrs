@@ -11,10 +11,13 @@ public class Floor extends Actor
 {
     static int timer = 0;
     static int waves = 20;
+    static boolean spawned = false;
+    static boolean start = false;
+    static long tempTime;
     static  int[][] creepCount = new  int[][]{
-    {0,0,0,0},
-    {0,0,0,0},
-    {0,0,0,0},
+    {1,2,3,0},
+    {1,3,4,0},
+    {2,2,2,0},
     {0,0,0,0},
     {0,0,0,0},
     {0,0,0,0}
@@ -33,51 +36,104 @@ public class Floor extends Actor
                    break;
         }
     }
-    /*private int getId(){
-        return id;
-    }*/
+
     /**
      * Act - do whatever the Floor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     { 
-        if(id==0){
+        if(id==0&&Starter.isStart()){
             timer ++;
             World world = getWorld();
             //List creepInRange = getObjectsInRange(100,Creep.class);
             switch(MyWorld.getWave()){
                 case 1: if(timer%60==0){
-                            if(true){
+                            if(creepCount[0][0]>0){
+                                Creep c1 = new Creep(0);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[0][0] -= 1;
+                                System.out.println("Spawn crep 1");
+                                break;
+                            }
+                            else if(creepCount[0][1]>0){
+                                Creep c1 = new Creep(1);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[0][1] -= 1;
+                                System.out.println("Spawn crep 2");
+                                break;
+                            }
+                            else if(creepCount[0][2]>0){
+                                Creep c1 = new Creep(2);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[0][2] -= 1;
+                                System.out.println("Spawn crep 3");
+                                break;
+                            }
+                            else if(creepCount[0][3]>0){
+                                Creep c1 = new Creep(3);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[0][3] -= 1;
+                                System.out.println("Spawn crep 4");
+                                break;
+                            }else{
+                                spawned = true;
+                            }
+                        }
+               case 2: if(timer%60==0){
+                            if(creepCount[1][0]>0){
+                                Creep c1 = new Creep(0);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[1][0] -= 1;
+                                System.out.println("Spawn crep XXX");
+                                break;
+                            }
+                            if(creepCount[1][1]>0){
+                                Creep c1 = new Creep(1);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[1][1] -= 1;
+                                break;
+                            }
+                            if(creepCount[1][2]>0){
+                                Creep c1 = new Creep(2);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[1][2] -= 1;
+                                break;
+                            }
+                            if(creepCount[1][3]>0){
+                                Creep c1 = new Creep(3);
+                                world.addObject(c1,getX(),getY());
+                                creepCount[1][3] -= 1;
+                                break;
+                            }
+                        }
+               /*case 3: if(timer%60==0){
+                            if(creepCount[2][0]>0){
                                 Creep c1 = new Creep(0);
                                 world.addObject(c1,getX(),getY());
                             }
-                        }
-                case 2: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
-                case 3: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
-                case 4: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
-                case 5: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
-                case 6: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
-                case 7: if(timer%60==0){
-                            Creep c1 = new Creep(0);
-                            world.addObject(c1,getX(),getY());
-                        }
+                            if(creepCount[2][1]>0){
+                                Creep c1 = new Creep(1);
+                                world.addObject(c1,getX(),getY());
+                            }
+                            if(creepCount[2][2]>0){
+                                Creep c1 = new Creep(2);
+                                world.addObject(c1,getX(),getY());
+                            }
+                            if(creepCount[2][3]>0){
+                                Creep c1 = new Creep(3);
+                                world.addObject(c1,getX(),getY());
+                            }
+                        }*/
             }
+            List objects = world.getObjects(Creep.class);
+            if(objects.isEmpty()&&spawned&&Starter.isStart()){
+                MyWorld.nextWave();
+                spawned = false;
+                Starter.stop();
+            }
+            //System.out.println(System.currentTimeMillis());
+            
         }
     }    
 }
