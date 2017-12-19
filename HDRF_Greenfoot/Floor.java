@@ -47,7 +47,23 @@ public class Floor extends Actor
             timer ++;
             World world = getWorld();
             //List creepInRange = getObjectsInRange(100,Creep.class);
-            switch(MyWorld.getWave()){
+           if(timer%60==0){
+               for(int i = 0;i<5;i++){
+                   if(MyWorld.getWave()==i){
+                        for(int j = 0;j<4;j++){
+                            if(creepCount[i][j]>0){
+                                Creep c = new Creep(j);
+                                world.addObject(c,getX(),getY());
+                                creepCount[i][j] -= 1;
+                                break;
+                            }else {
+                                spawned=true;
+                            }
+                        }
+                    }
+               }
+           }
+           /*switch(MyWorld.getWave()){
                 case 1: if(timer%60==0){
                             if(creepCount[0][0]>0){
                                 Creep c1 = new Creep(0);
@@ -114,7 +130,7 @@ public class Floor extends Actor
                                 break;
                             }
                         }
-               /*case 3: if(timer%60==0){
+               case 3: if(timer%60==0){
                             if(creepCount[2][0]>0){
                                 Creep c1 = new Creep(0);
                                 world.addObject(c1,getX(),getY());
@@ -131,9 +147,9 @@ public class Floor extends Actor
                                 Creep c1 = new Creep(3);
                                 world.addObject(c1,getX(),getY());
                             }
-                        }*/
+                        }
 
-           }
+           }*/
             List objects = world.getObjects(Creep.class);
             if(objects.isEmpty()&&spawned&&Starter.isStart()){
                 MyWorld.nextWave();

@@ -10,15 +10,34 @@ public class Creep extends Actor
 {
     int cId;
     int speed;
-    int health;
-    float vehicleResistance;
-    float Resistance;
+    double health;
+    double vehicleResistance;
+    double Resistance;
     int moneyDropped;
     
     Creep(int i){
         cId = i;
-        speed = 1;
-        health = 100;
+        switch(i){
+            case 1:  speed = 2;
+                     vehicleResistance = 1;
+                     health = MyWorld.getWave()*0.1+100;
+                     setImage("img/soldier1.png");
+                     break;
+                     
+            case 2:  speed = 1;
+                     vehicleResistance = 0.8;
+                     health = MyWorld.getWave()*0.1+200;
+                     setImage("img/soldier2.png");
+                     break;
+                     
+            case 3:  speed = 1;
+                     health = MyWorld.getWave()*0.1+150;
+                     break;
+                     
+            case 4:  health = MyWorld.getWave()*0.1+50;
+                     break;
+        }
+        moneyDropped = (int)(50+MyWorld.getWave()*0.2);
         switch(cId){
             case 0: setImage("img/soldier1.png");
                     break;
