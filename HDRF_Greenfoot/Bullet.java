@@ -13,7 +13,7 @@ public class Bullet extends Actor
         switch(i){
                 case 0:    speed = 9;
                            break;
-                case 1:    speed = 10;
+                case 1:    speed = 11;
                            break;
         }
         id = i;

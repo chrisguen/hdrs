@@ -11,25 +11,24 @@ public class Creep extends Actor
     int cId;
     int speed;
     double health;
-    double vehicleResistance;
-    double resistance;
+    double vehicleDmgMultiplier=1;
+    double dmgMultiplier=1;
     int moneyDropped;
     Bar healthBar;
-    
 
     Creep(int i){
         cId = i;
         switch(i){
             case 0:  speed = 2;
-                     vehicleResistance = 1;
+                     vehicleDmgMultiplier = 1;
                      health = MyWorld.getWave()*10+100;
                      setImage("img/soldier1.png");
                      break;
                      
             case 1:  speed = 1;
-                     vehicleResistance = 0.8;
+                     vehicleDmgMultiplier = 0.8;
                      health = MyWorld.getWave()*10+200;
-                     setImage("img/soldier2.png");
+                     setImage("img/tank.png");
                      break;
                      
             case 2:  speed = 1;
@@ -43,35 +42,33 @@ public class Creep extends Actor
                      break;
         }
         moneyDropped = (int)(50+MyWorld.getWave()*0.2);
-        switch(cId){
-            case 0: setImage("img/soldier1.png");
-                    break;
-            case 1: setImage("img/soldier2.png");
-                    break;
-        }
         healthBar = new Bar("","",(int)health,(int)health);
     }
     /*Creep(int i, int h, int s, float ar, float ur, int md){
         cId = i;
         health = h;
         speed = s;
-        vehicleResistance = ar;
+        vehicleDmgMultiplier = ar;
         Resistance = ur;
         moneyDropped = md;
     }*/
     public void hit(double dmg){
         switch(cId){
-            case 0:     health = health - resistance*dmg;
-                        healthBar.subtract((int)(resistance*dmg));
+            case 0:     health = health - dmgMultiplier*dmg;
+                        healthBar.subtract((int)(dmgMultiplier*dmg));
+                        break;
                         
-            case 1:     health = health - vehicleResistance*dmg;
-                        healthBar.subtract((int)(vehicleResistance*dmg));
+            case 1:     health = health - vehicleDmgMultiplier*dmg;
+                        healthBar.subtract((int)(vehicleDmgMultiplier*dmg));
+                        break;
                         
-            case 2:     health = health - resistance*dmg;
-                        healthBar.subtract((int)(resistance*dmg));
+            case 2:     health = health - dmgMultiplier*dmg;
+                        healthBar.subtract((int)(dmgMultiplier*dmg));
+                        break;
                         
-            case 3:     health = health - resistance*dmg;
-                        healthBar.subtract((int)(resistance*dmg));
+            case 3:     health = health - dmgMultiplier*dmg;
+                        healthBar.subtract((int)(dmgMultiplier*dmg));
+                        break;
         }
         if(health<1){
             MyWorld.addMoney(moneyDropped);
@@ -181,6 +178,7 @@ public class Creep extends Actor
                     Bullet temp = (Bullet)bulletInRange.get(0);
                     World world = getWorld();
                     hit(temp.getDmg());
+                    //System.out.println("dmg: "+temp.getDmg());
                     world.removeObject(temp);
                 }
             }

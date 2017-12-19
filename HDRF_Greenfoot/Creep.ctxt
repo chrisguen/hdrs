@@ -5,7 +5,7 @@ comment1.params=i
 comment1.target=Creep(int)
 comment2.params=dmg
 comment2.target=void\ hit(double)
-comment2.text=Creep(int\ i,\ int\ h,\ int\ s,\ float\ ar,\ float\ ur,\ int\ md){\n\ \ \ \ \ \ \ \ cId\ \=\ i;\n\ \ \ \ \ \ \ \ health\ \=\ h;\n\ \ \ \ \ \ \ \ speed\ \=\ s;\n\ \ \ \ \ \ \ \ vehicleResistance\ \=\ ar;\n\ \ \ \ \ \ \ \ Resistance\ \=\ ur;\n\ \ \ \ \ \ \ \ moneyDropped\ \=\ md;\n}
+comment2.text=Creep(int\ i,\ int\ h,\ int\ s,\ float\ ar,\ float\ ur,\ int\ md){\n\ \ \ \ \ \ \ \ cId\ \=\ i;\n\ \ \ \ \ \ \ \ health\ \=\ h;\n\ \ \ \ \ \ \ \ speed\ \=\ s;\n\ \ \ \ \ \ \ \ vehicleDmgMultiplier\ \=\ ar;\n\ \ \ \ \ \ \ \ Resistance\ \=\ ur;\n\ \ \ \ \ \ \ \ moneyDropped\ \=\ md;\n}
 comment3.params=
 comment3.target=void\ placeHealthBar()
 comment4.params=

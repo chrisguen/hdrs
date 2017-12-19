@@ -46,40 +46,42 @@ public class Tower extends Actor
             case 0:     creepsInRange = getObjectsInRange(120,Creep.class);
                         if(placed && creepsInRange.isEmpty()==false){
                             if(placed && creepsInRange.get(0)!=null){
-                                Creep temp = (Creep)creepsInRange.get(0);
-                                Creep temp1 = (Creep)creepsInRange.get(1);
-                                if(temp.getId()!=2){
-                                    tmpCreepX = temp1.getX();
-                                    tmpCreepY = temp1.getY();
-                                    turnTowards(tmpCreepX,tmpCreepY);
+                                for(int i = 0;creepsInRange.size()>i;i++){
+                                    Creep temp = (Creep)creepsInRange.get(i);
+                                    if(temp.getId()!=2){
+                                        tmpCreepX = temp.getX();
+                                        tmpCreepY = temp.getY();
+                                        turnTowards(tmpCreepX,tmpCreepY);
+                                    }
                                 }
                             }
                         }
                         if(placed && creepsInRange.isEmpty()==false){
                             if(timer0 && placed && creepsInRange.get(0)!=null){
                                 Creep temp = (Creep)creepsInRange.get(0);
-                                Creep temp1 = (Creep)creepsInRange.get(1);
                                 if(temp.getId()!=2){
-                                    tmpCreepX = temp1.getX();
-                                    tmpCreepY = temp1.getY();
+                                    tmpCreepX = temp.getX();
+                                    tmpCreepY = temp.getY();
                                     Bullet b = new Bullet(tId,tmpCreepX, tmpCreepY, getRotation(),25.0);
                                     World world = getWorld();
                                     world.addObject(b,this.getX(),this.getY());
-                                    System.out.println("NEW BULLET0 at: "+tmpCreepX +" "+ tmpCreepY);
+                                    //System.out.println("NEW BULLET0 at: "+tmpCreepX +" "+ tmpCreepY);
                                     break;
                                 }
                             }
                         }
                         break;
 
-             case 1:    creepsInRange = getObjectsInRange(200,Creep.class);
+             case 1:    creepsInRange = getObjectsInRange(250,Creep.class);
                         if(placed && creepsInRange.isEmpty()==false){
                             if(placed && creepsInRange.get(0)!=null){
-                                Creep temp = (Creep)creepsInRange.get(0); 
-                                if(temp.getId()==2){
-                                    tmpCreepX = temp.getX();
-                                    tmpCreepY = temp.getY();
-                                    turnTowards(tmpCreepX,tmpCreepY);
+                                for(int i = 0;creepsInRange.size()>i;i++){
+                                    Creep temp = (Creep)creepsInRange.get(i);
+                                    if(temp.getId()==2){
+                                        tmpCreepX = temp.getX();
+                                        tmpCreepY = temp.getY();
+                                        turnTowards(tmpCreepX,tmpCreepY);
+                                    }
                                 }
                             }
                         }
@@ -89,10 +91,10 @@ public class Tower extends Actor
                                 if(temp.getId()==2){
                                     tmpCreepX = temp.getX();
                                     tmpCreepY = temp.getY();
-                                    Bullet b = new Bullet(tId,tmpCreepX, tmpCreepY, getRotation(),20);
+                                    Bullet b = new Bullet(tId,tmpCreepX, tmpCreepY, getRotation(),20.0);
                                     World world = getWorld();
                                     world.addObject(b,this.getX(),this.getY());
-                                    System.out.println("NEW BULLET1 at: "+tmpCreepX +" "+ tmpCreepY);
+                                    //System.out.println("NEW BULLET1 at: "+tmpCreepX +" "+ tmpCreepY);
                                     break;
                                 }
                             }
