@@ -23,6 +23,11 @@ public class Floor extends Actor
     {2,2,2,0},
     {0,0,0,0},
     {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
+    {0,0,0,0},
     {0,0,0,0}
     };
     int id;
@@ -56,7 +61,6 @@ public class Floor extends Actor
            }else if((cd - System.currentTimeMillis())>5000){
                 cd5s = false;
            }*/
-           System.out.println(cd5s);
            timer ++;
            World world = getWorld();
             //List creepInRange = getObjectsInRange(100,Creep.class);

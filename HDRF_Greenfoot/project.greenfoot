@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue Dec 19 09:28:35 CET 2017
+#Tue Dec 19 11:54:26 CET 2017
 editor.fx.0.height=0
 target2.width=80
 target8.name=Starter
@@ -147,8 +147,8 @@ dependency5.type=UsesDependency
 target8.type=ClassTarget
 dependency18.to=Bullet
 dependency13.from=MyWorld
-class.Floor.superclass=greenfoot.Actor
 dependency9.type=UsesDependency
+class.Floor.superclass=greenfoot.Actor
 target6.width=80
 target7.width=80
 dependency17.from=MyWorld

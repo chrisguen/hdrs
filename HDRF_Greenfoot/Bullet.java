@@ -16,7 +16,7 @@ public class Bullet extends Actor
         delay = dl;
     }
     Bullet(int tx, int ty, int rot){
-        speed = 7;
+        speed = 9;
         id = 0;
         int x = tx;
         int y = ty;

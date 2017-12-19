@@ -141,7 +141,7 @@ public class Creep extends Actor
         }
         
         if(getWorld()!=null){
-            List bulletInRange = getObjectsInRange(10,Bullet.class);
+            List bulletInRange = getObjectsInRange(16,Bullet.class);
             if(bulletInRange.isEmpty()==false){
                 if(bulletInRange.get(0)!=null){
                     Bullet temp = (Bullet)bulletInRange.get(0);
