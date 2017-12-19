@@ -14,7 +14,7 @@ public class Creep extends Actor
     double vehicleResistance;
     double Resistance;
     int moneyDropped;
-    
+    Bar healthBar;
     
 
     Creep(int i){
@@ -47,9 +47,8 @@ public class Creep extends Actor
             case 1: setImage("img/soldier2.png");
                     break;
         }
-        //Bar healthBar = new Bar("","",(int)health,(int)health);
-        //World world = getWorld();
-        //world.addObject(healthBar,getX(),getY());
+        healthBar = new Bar("","",(int)health,(int)health);
+        
     }
     /*Creep(int i, int h, int s, float ar, float ur, int md){
         cId = i;
@@ -59,26 +58,40 @@ public class Creep extends Actor
         Resistance = ur;
         moneyDropped = md;
     }*/
-    public void hit(int dmg){
-        health = health - dmg;
+    public void hit(double dmg){
+        switch(cId){
+            case 0:     health = health - dmg;
+                        healthBar.subtract((int)dmg);
+        }
         if(health<1){
             MyWorld.addMoney(moneyDropped);
             World world = getWorld();
+            world.removeObject(healthBar);
             world.removeObject(this);
         }
     }
-   
+    public void placeHealthBar(){
+        World world = getWorld();
+        world.addObject(healthBar,50,50);
+        healthBar.setBarWidth(26);
+        healthBar.setBarHeight(2);
+        healthBar.setFontSize(0.1f);
+        healthBar.setShowTextualUnits(false);
+    }
     /**
      * Act - do whatever the Creep wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        //healthBar.setLocation(getX(),getY()+20);
+        healthBar.setLocation(getX(),getY()+20);
+        if(cId==2){}
+        else{
         switch(getRotation()){
             case 0:     if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)) == 1){
                              MyWorld.minusLive(1);
                              World world = getWorld();
+                             world.removeObject(healthBar);
                              world.removeObject(this);
                              break;
                         }else if(MyWorld.getObjectId(((this.getX()-16)/32+1),(this.getY()-16)/32) == 15){
@@ -138,16 +151,16 @@ public class Creep extends Actor
                             //System.out.println("270 turn -90");
                             break;
                         }else{System.out.println("Unzulaessiger pfad!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
-        }
+        }}
         
         if(getWorld()!=null){
-            List bulletInRange = getObjectsInRange(16,Bullet.class);
+            List bulletInRange = getObjectsInRange(15,Bullet.class);
             if(bulletInRange.isEmpty()==false){
                 if(bulletInRange.get(0)!=null){
                     Bullet temp = (Bullet)bulletInRange.get(0);
                     World world = getWorld();
+                    hit(temp.getDmg());
                     world.removeObject(temp);
-                    hit(25);
                 }
             }
         }

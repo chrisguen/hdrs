@@ -17,7 +17,7 @@ public class Tower extends Actor
     int timer=0;
     Tower(int id){
         switch(id){
-            case 0: setImage("img/TowerRed90.png");   
+            case 0: setImage("img/TowerRed.png");   
             break;
    
             case 1: setImage("img/TowerGreen.png");
@@ -37,14 +37,14 @@ public class Tower extends Actor
         }else{
             d=false;
         }
+        List creepsInRange = getObjectsInRange(100,Creep.class);
         switch(tId){
-            case 0: List creepsInRange = getObjectsInRange(100,Creep.class);
-                        if(placed && creepsInRange.isEmpty()==false){
+            case 0:     if(placed && creepsInRange.isEmpty()==false){
                             if(d && placed && creepsInRange.get(0)!=null){
                                 Creep temp = (Creep)creepsInRange.get(0);
                                 tmpCreepX = temp.getX();
                                 tmpCreepY = temp.getY();
-                                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation());
+                                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation(),25.0);
                                 World world = getWorld();
                                 world.addObject(b,this.getX(),this.getY());
                                 //System.out.println("NEW BULLET at: "+tmpCreepX +" "+ tmpCreepY);
@@ -58,7 +58,25 @@ public class Tower extends Actor
                                 turnTowards(tmpCreepX,tmpCreepY);
                             }
                         }
-             case 1: 
+             case 1:    if(placed && creepsInRange.isEmpty()==false){
+                            if(d && placed && creepsInRange.get(0)!=null){
+                                Creep temp = (Creep)creepsInRange.get(0);
+                                tmpCreepX = temp.getX();
+                                tmpCreepY = temp.getY();
+                                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation(),25.0);
+                                World world = getWorld();
+                                world.addObject(b,this.getX(),this.getY());
+                                //System.out.println("NEW BULLET at: "+tmpCreepX +" "+ tmpCreepY);
+                            }
+                        }
+                        if(placed && creepsInRange.isEmpty()==false){
+                            if(placed && creepsInRange.get(0)!=null){
+                                Creep temp = (Creep)creepsInRange.get(0);
+                                tmpCreepX = temp.getX();
+                                tmpCreepY = temp.getY();
+                                turnTowards(tmpCreepX,tmpCreepY);
+                            }
+                        }
         }
         // check for initial pressing down of mouse button
         if(MyWorld.getMoney()>=MyWorld.getTowerPrice(tId)){

@@ -9,18 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bullet extends Actor
 {
     int dmg, speed, ttl, id, delay;
-    Bullet(int i, int d, int s, int dl){
-        id = i;
-        dmg = d;
-        speed = s;
-        delay = dl;
-    }
-    Bullet(int tx, int ty, int rot){
+    Bullet(int tx, int ty, int rot, double d){
         speed = 9;
         id = 0;
         int x = tx;
         int y = ty;
-
+        dmg = (int)d;
         setRotation(rot);
     }
     /**
@@ -40,4 +34,7 @@ public class Bullet extends Actor
             //System.out.println(getRotation());
         }
     }    
+    public double getDmg(){
+        return dmg;
+    }
 }

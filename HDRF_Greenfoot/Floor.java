@@ -18,8 +18,8 @@ public class Floor extends Actor
     static boolean cd5s = false;
     static boolean cd5ss = false;
     static  int[][] creepCount = new  int[][]{
-    {1,2,3,0},
-    {1,3,4,0},
+    {1,0,0,0},
+    {0,1,0,0},
     {2,2,2,0},
     {0,0,0,0},
     {0,0,0,0},
@@ -71,6 +71,7 @@ public class Floor extends Actor
                             if(creepCount[i][j]>0){
                                 Creep c = new Creep(j);
                                 world.addObject(c,getX(),getY());
+                                c.placeHealthBar();
                                 creepCount[i][j] -= 1;
                                 break;
                             }else {
