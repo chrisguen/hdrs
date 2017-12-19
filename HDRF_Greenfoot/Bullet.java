@@ -9,9 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bullet extends Actor
 {
     int dmg, speed, ttl, id, delay;
-    Bullet(int tx, int ty, int rot, double d){
-        speed = 9;
-        id = 0;
+    Bullet(int i, int tx, int ty, int rot, double d){
+        switch(i){
+                case 0:    speed = 9;
+                           break;
+                case 1:    speed = 10;
+                           break;
+        }
+        id = i;
         int x = tx;
         int y = ty;
         dmg = (int)d;
@@ -25,6 +30,7 @@ public class Bullet extends Actor
     {
         switch(id){
             case 0: setImage("img/bullet1.png");
+            case 1: setImage("img/bullet1.png");
         }
         move(speed);
         if(isAtEdge()||getX()>=640){
