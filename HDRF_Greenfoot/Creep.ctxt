@@ -1,13 +1,12 @@
 #BlueJ class context
 comment0.target=Creep
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Creep\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Creep\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=i
 comment1.target=Creep(int)
-comment2.params=i\ h\ s\ ar\ ur\ md
-comment2.target=Creep(int,\ int,\ int,\ float,\ float,\ int)
-comment3.params=dmg
-comment3.target=void\ hit(int)
-comment4.params=
-comment4.target=void\ act()
-comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Creep\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=5
+comment2.params=dmg
+comment2.target=void\ hit(int)
+comment2.text=Creep(int\ i,\ int\ h,\ int\ s,\ float\ ar,\ float\ ur,\ int\ md){\n\ \ \ \ \ \ \ \ cId\ \=\ i;\n\ \ \ \ \ \ \ \ health\ \=\ h;\n\ \ \ \ \ \ \ \ speed\ \=\ s;\n\ \ \ \ \ \ \ \ vehicleResistance\ \=\ ar;\n\ \ \ \ \ \ \ \ Resistance\ \=\ ur;\n\ \ \ \ \ \ \ \ moneyDropped\ \=\ md;\n}
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Creep\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=4

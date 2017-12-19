@@ -15,26 +15,29 @@ public class Creep extends Actor
     double Resistance;
     int moneyDropped;
     
+    
+
     Creep(int i){
         cId = i;
         switch(i){
-            case 1:  speed = 2;
+            case 0:  speed = 2;
                      vehicleResistance = 1;
                      health = MyWorld.getWave()*0.1+100;
                      setImage("img/soldier1.png");
                      break;
                      
-            case 2:  speed = 1;
+            case 1:  speed = 1;
                      vehicleResistance = 0.8;
                      health = MyWorld.getWave()*0.1+200;
                      setImage("img/soldier2.png");
                      break;
                      
-            case 3:  speed = 1;
+            case 2:  speed = 1;
                      health = MyWorld.getWave()*0.1+150;
                      break;
                      
-            case 4:  health = MyWorld.getWave()*0.1+50;
+            case 3:  speed = 1;
+                     health = MyWorld.getWave()*0.1+50; 
                      break;
         }
         moneyDropped = (int)(50+MyWorld.getWave()*0.2);
@@ -44,15 +47,18 @@ public class Creep extends Actor
             case 1: setImage("img/soldier2.png");
                     break;
         }
+        //Bar healthBar = new Bar("","",(int)health,(int)health);
+        //World world = getWorld();
+        //world.addObject(healthBar,getX(),getY());
     }
-    Creep(int i, int h, int s, float ar, float ur, int md){
+    /*Creep(int i, int h, int s, float ar, float ur, int md){
         cId = i;
         health = h;
         speed = s;
         vehicleResistance = ar;
         Resistance = ur;
         moneyDropped = md;
-    }
+    }*/
     public void hit(int dmg){
         health = health - dmg;
         if(health<1){
@@ -68,6 +74,7 @@ public class Creep extends Actor
      */
     public void act() 
     {
+        //healthBar.setLocation(getX(),getY()+20);
         switch(getRotation()){
             case 0:     if(MyWorld.getObjectId(((this.getX()-16)/32),((this.getY()-16)/32)) == 1){
                              MyWorld.minusLive(1);
@@ -144,11 +151,5 @@ public class Creep extends Actor
                 }
             }
         }
-        //System.out.println("x y-1 "+MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32-1));
-        //System.out.println("x+1 y "+MyWorld.getObjectId(((this.getX()-16)/32+1),(this.getY()-16)/32));
-        //System.out.println("x y+1 "+MyWorld.getObjectId(((this.getX()-16)/32),(this.getY()-16)/32+1));
-        //System.out.println("x-1 y "+MyWorld.getObjectId(((this.getX()-16)/32-1),(this.getY()-16)/32));
-        //System.out.println(((this.getX()-16)/32)+" "+((this.getY()-16)/32));
-        //System.out.println("Rotation: "+getRotation());
     }
 }

@@ -14,6 +14,9 @@ public class Floor extends Actor
     static boolean spawned = false;
     static boolean start = false;
     static long tempTime;
+    static long cd = 0;
+    static boolean cd5s = false;
+    static boolean cd5ss = false;
     static  int[][] creepCount = new  int[][]{
     {1,2,3,0},
     {1,3,4,0},
@@ -36,7 +39,9 @@ public class Floor extends Actor
                    break;
         }
     }
-
+    public static void timer(){
+        cd5s=false;
+    }
     /**
      * Act - do whatever the Floor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -44,8 +49,16 @@ public class Floor extends Actor
     public void act() 
     { 
         if(id==0&&Starter.isStart()){
-            timer ++;
-            World world = getWorld();
+           
+           /*if((Starter.isStart()==false) && !cd5s){
+                cd = System.currentTimeMillis();
+                cd5s = true;
+           }else if((cd - System.currentTimeMillis())>5000){
+                cd5s = false;
+           }*/
+           System.out.println(cd5s);
+           timer ++;
+           World world = getWorld();
             //List creepInRange = getObjectsInRange(100,Creep.class);
            if(timer%60==0){
                for(int i = 0;i<5;i++){
@@ -150,14 +163,13 @@ public class Floor extends Actor
                         }
 
            }*/
-            List objects = world.getObjects(Creep.class);
-            if(objects.isEmpty()&&spawned&&Starter.isStart()){
-                MyWorld.nextWave();
-                spawned = false;
-                Starter.stop();
-            }
+           List objects = world.getObjects(Creep.class);
+           if((objects.isEmpty()&&spawned&&Starter.isStart())){
+               MyWorld.nextWave();
+               spawned = false;
+               Starter.stop();
+           }
             //System.out.println(System.currentTimeMillis());
-            
         }
     }    
 }

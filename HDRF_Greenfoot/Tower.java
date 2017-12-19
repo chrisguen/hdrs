@@ -15,7 +15,6 @@ public class Tower extends Actor
      */
     public int tId, price, tmpCreepX, tmpCreepY;
     int timer=0;
-    byte test = 0;
     Tower(int id){
         switch(id){
             case 0: setImage("img/TowerRed90.png");   
@@ -33,41 +32,40 @@ public class Tower extends Actor
       {
         boolean d = false;
         timer = timer + 2;
-        List creepsInRange = getObjectsInRange(100,Creep.class);
-        test ++;
         if (timer % 100 == 0){
             d = true;
         }else{
             d=false;
         }
-        if(placed && creepsInRange.isEmpty()==false){
-            if(d && placed && creepsInRange.get(0)!=null){
-                Creep temp = (Creep)creepsInRange.get(0);
-                tmpCreepX = temp.getX();
-                tmpCreepY = temp.getY();
-                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation());
-                World world = getWorld();
-                world.addObject(b,this.getX(),this.getY());
-                //System.out.println("NEW BULLET at: "+tmpCreepX +" "+ tmpCreepY);
-            }
+        switch(tId){
+            case 0: List creepsInRange = getObjectsInRange(100,Creep.class);
+                        if(placed && creepsInRange.isEmpty()==false){
+                            if(d && placed && creepsInRange.get(0)!=null){
+                                Creep temp = (Creep)creepsInRange.get(0);
+                                tmpCreepX = temp.getX();
+                                tmpCreepY = temp.getY();
+                                Bullet b = new Bullet(tmpCreepX, tmpCreepY, getRotation());
+                                World world = getWorld();
+                                world.addObject(b,this.getX(),this.getY());
+                                //System.out.println("NEW BULLET at: "+tmpCreepX +" "+ tmpCreepY);
+                            }
+                        }
+                        if(placed && creepsInRange.isEmpty()==false){
+                            if(placed && creepsInRange.get(0)!=null){
+                                Creep temp = (Creep)creepsInRange.get(0);
+                                tmpCreepX = temp.getX();
+                                tmpCreepY = temp.getY();
+                                turnTowards(tmpCreepX,tmpCreepY);
+                            }
+                        }
+             case 1: 
         }
-        if(placed && creepsInRange.isEmpty()==false){
-            if(placed && creepsInRange.get(0)!=null){
-                Creep temp = (Creep)creepsInRange.get(0);
-                tmpCreepX = temp.getX();
-                tmpCreepY = temp.getY();
-                turnTowards(tmpCreepX,tmpCreepY);
-            }
-        }
-        //System.out.println(MyWorld.getMoney());
         // check for initial pressing down of mouse button
         if(MyWorld.getMoney()>=MyWorld.getTowerPrice(tId)){
             dragAllowed = true;
         }else{
             dragAllowed = false;
         }
-        //if (Greenfoot.mouseMoved(this)) getImage().setTransparency(100);
-        //if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) getImage().setTransparency(255);
 
         if (Greenfoot.mousePressed(this) && !isGrabbed && dragAllowed && !placed)
         {
