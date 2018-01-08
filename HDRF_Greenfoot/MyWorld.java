@@ -14,27 +14,27 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    private static int lives = 20;
+    public static int lives = 20;
     
-    private static int wave = 1;
+    public static int wave = 1;
     
-    private static int money = 200;
+    public static int money = 200;
     
-    private static int level = 1;
+    public static int level = 1;
     
     public static int t0x = 700;
     public static int t0y = 250;
-    private static int t0price = 60;
+    public static int t0price = 60;
     
     public static int t1x = 700;
     public static int t1y = 325;
-    private static int t1price = 40;
+    public static int t1price = 40;
     
     public static int t2x = 700;
     public static int t2y = 400;
-    private static int t2price = 100;
+    public static int t2price = 100;
     
-    private static Floor[][] array = new Floor[1000][640];
+    public static Floor[][] array = new Floor[1000][640];
     public static  int[][] Level1 = new  int[][]{
     {36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36},
     {36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36},
@@ -111,38 +111,51 @@ public class MyWorld extends World
         //Tower test1 = new Tower(0);
         //Tower test2 = new Tower(2);
         
-        //buildWorld(Level2,2);
         buildToolbar();
-        StartScreen t = new StartScreen();
+        Screen t = new Screen("title");
         addObject(t,500,320);
-        /*for(int y = 16;y<=640;y += 32){
-            for (int x = 16; x<=640; x += 32){
-                Floor temp = new Floor(ObjectId[(y-16)/32][(x-16)/32]);
-                array[x][y] = temp;
-                addObject(temp ,x,y);
-                //ObjectId[(y-16)/32][(y-16)/32]=
-                //System.out.println(x +" " + y)
-            }
-        }*/
+        Button button = new Button("play");
+        addObject(button, 500,470);
+        System.out.println("Setup complete");
     }
     
-    public void buildWorld(int[][] a, int l){
+    /*public static void buildWorld(int l){
         List objects = getObjects(Floor.class);
         if (objects != null) { removeObjects(objects); }
-        for(int y = 16;y<=640;y += 32){
-            for (int x = 16; x<=640; x += 32){
-                Floor temp = new Floor(a[(y-16)/32][(x-16)/32]);
-                array[x][y] = temp;
-                addObject(temp ,x,y);
-                //ObjectId[(y-16)/32][(y-16)/32];
-                //System.out.println(x +" " + y);
-            }
+        switch(l){
+            case 1:     for(int y = 16;y<=640;y += 32){
+                            for (int x = 16; x<=640; x += 32){
+                                    Floor temp = new Floor(Level1[(y-16)/32][(x-16)/32]);
+                                    array[x][y] = temp;
+                                    getWorld().addObject(temp ,x,y);
+                                    //ObjectId[(y-16)/32][(y-16)/32];
+                                    //System.out.println(x +" " + y);
+                                }
+                            }
+           case 2:     for(int y = 16;y<=640;y += 32){
+                            for (int x = 16; x<=640; x += 32){
+                                    Floor temp = new Floor(Level2[(y-16)/32][(x-16)/32]);
+                                    array[x][y] = temp;
+                                    addObject(temp ,x,y);
+                                    //ObjectId[(y-16)/32][(y-16)/32];
+                                    //System.out.println(x +" " + y);
+                                }
+                            }
+          case 3:     for(int y = 16;y<=640;y += 32){
+                            for (int x = 16; x<=640; x += 32){
+                                    Floor temp = new Floor(Level3[(y-16)/32][(x-16)/32]);
+                                    array[x][y] = temp;
+                                    addObject(temp ,x,y);
+                                    //ObjectId[(y-16)/32][(y-16)/32];
+                                    //System.out.println(x +" " + y);
+                                }
+                            }
         }
         level=l;
         System.out.println("World "+l+" build");
-    }
+    }*/
     public void buildToolbar(){
-        Money moneyTest = new Money(money);
+        Money moneyTest = new Money();
         TowerDesc t1desc = new TowerDesc(0);
         TowerDesc t2desc = new TowerDesc(1);
         TowerDesc t3desc = new TowerDesc(2);
@@ -211,6 +224,5 @@ public class MyWorld extends World
             case 2: return t2price;
             default: return -1;
         }
-        
     }
 }

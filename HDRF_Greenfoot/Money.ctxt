@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Money
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Money\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=a
-comment1.target=Money(int)
+comment1.params=
+comment1.target=void\ act()
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ plus200Money()
 comment3.params=
-comment3.target=void\ plus200Money()
-numComments=4
+comment3.target=void\ removeFloor()
+comment4.params=l
+comment4.target=void\ buildWorld(int)
+numComments=5
