@@ -111,12 +111,13 @@ public class MyWorld extends World
         //Tower test1 = new Tower(0);
         //Tower test2 = new Tower(2);
         
+        setBackground("img/background.png");
         buildToolbar();
         Screen t = new Screen("title");
         addObject(t,500,320);
         Button button = new Button("play");
         addObject(button, 500,470);
-        System.out.println("Setup complete");
+        //System.out.println("Setup complete");
     }
     
     /*public static void buildWorld(int l){

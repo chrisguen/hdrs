@@ -9,6 +9,7 @@ import java.util.*;
 public class Money extends Actor
 {
     private GreenfootImage background = new GreenfootImage("img/menu.png");
+    long t = 5*60;
     public void act() 
     {
         if(Greenfoot.mouseClicked(this)){
@@ -23,6 +24,10 @@ public class Money extends Actor
         getImage().drawString("Lives: "+ MyWorld.getLives(), 10, 40);
         getImage().drawString("Money: "+ MyWorld.getMoney(), 10, 55);
         getImage().drawString("start: "+ Starter.isStart(), 10, 70);
+        /*getImage().drawString("start: "+ t/50, 10, 80);
+        if(Starter.isStart()){
+            t--;
+        }*/
     }    
     public void plus200Money(){
         MyWorld.addMoney(200);

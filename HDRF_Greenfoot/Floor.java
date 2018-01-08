@@ -18,7 +18,7 @@ public class Floor extends Actor
     static boolean cd5s = false;
     static boolean cd5ss = false;
     static  int[][] creepCount = new  int[][]{
-    {2,2,2,2},
+    {2,2,2,0},
     {1,3,1,0},
     {2,2,2,0},
     {0,0,0,0},
@@ -89,4 +89,7 @@ public class Floor extends Actor
             //System.out.println(System.currentTimeMillis());
         }
     }    
+    public static void resetWave(){
+
+    }
 }
