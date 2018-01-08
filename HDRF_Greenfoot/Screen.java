@@ -42,6 +42,7 @@ public class Screen extends Actor
                                     //System.out.println(x +" " + y);
                                 }
                             }
+                            break;
            case 2:     for(int y = 16;y<=640;y += 32){
                             for (int x = 16; x<=640; x += 32){
                                     Floor temp = new Floor(MyWorld.Level2[(y-16)/32][(x-16)/32]);
@@ -51,6 +52,7 @@ public class Screen extends Actor
                                     //System.out.println(x +" " + y);
                                 }
                             }
+                            break;
           case 3:     for(int y = 16;y<=640;y += 32){
                             for (int x = 16; x<=640; x += 32){
                                     Floor temp = new Floor(MyWorld.Level3[(y-16)/32][(x-16)/32]);
@@ -60,6 +62,7 @@ public class Screen extends Actor
                                     //System.out.println(x +" " + y);
                                 }
                             }
+                            break;
         }
         MyWorld.level=L;
         System.out.println("World "+L+" build");
