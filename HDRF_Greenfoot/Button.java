@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Button here.
  * 
@@ -26,6 +26,9 @@ public class Button extends Actor
                             break;    
             case "s3":      setImage("img/s3.png");
                             type = "s3";
+                            break;
+            case "cont":    setImage("img/continue.png");
+                            type = "cont";
                             break;
         }
     }
@@ -64,14 +67,30 @@ public class Button extends Actor
                                 getWorld().removeObjects(getWorld().getObjects(Screen.class));
                                 getWorld().removeObjects(getWorld().getObjects(Button.class));
                                 break;
+                                
+                case "cont":    switch(MyWorld.getLevel()){
+                                    case 1:     buildWorld(2);
+                                                getWorld().removeObjects(getWorld().getObjects(Screen.class));
+                                                getWorld().removeObjects(getWorld().getObjects(Button.class));                                 
+                                                break;
+                                    case 2:     buildWorld(3);
+                                                getWorld().removeObjects(getWorld().getObjects(Screen.class));
+                                                getWorld().removeObjects(getWorld().getObjects(Button.class));                                 
+                                                break;
+                                    case 3:     Screen s = new Screen("");
+                                                getWorld().removeObjects(getWorld().getObjects(Screen.class));
+                                                getWorld().removeObjects(getWorld().getObjects(Button.class));                                 
+                                                break;
+                                }
             }
         }
     }    
        public void buildWorld(int L){
-        //List objects = getObjects(Floor.class);
-        //if (objects != null) { removeObjects(objects); }
+           System.out.println("getworld: "+getWorld());
+        if(getWorld()!=null){List objects = getWorld().getObjects(Floor.class);
+        if (objects != null) { getWorld().removeObjects(objects); } 
         switch(L){
-            case 1:     for(int y = 16;y<=640;y += 32){
+            case 1:    for(int y = 16;y<=640;y += 32){
                             for (int x = 16; x<=640; x += 32){
                                     Floor temp = new Floor(MyWorld.Level1[(y-16)/32][(x-16)/32]);
                                     MyWorld.array[x][y] = temp;
@@ -79,8 +98,8 @@ public class Button extends Actor
                                     //ObjectId[(y-16)/32][(y-16)/32];
                                     //System.out.println(x +" " + y);
                                 }
-                            }
-                            break;
+                       }
+                       break;
            case 2:     for(int y = 16;y<=640;y += 32){
                             for (int x = 16; x<=640; x += 32){
                                     Floor temp = new Floor(MyWorld.Level2[(y-16)/32][(x-16)/32]);
@@ -89,9 +108,9 @@ public class Button extends Actor
                                     //ObjectId[(y-16)/32][(y-16)/32];
                                     //System.out.println(x +" " + y);
                                 }
-                            }
-                            break;
-          case 3:     for(int y = 16;y<=640;y += 32){
+                       }
+                       break;
+          case 3:      for(int y = 16;y<=640;y += 32){
                             for (int x = 16; x<=640; x += 32){
                                     Floor temp = new Floor(MyWorld.Level3[(y-16)/32][(x-16)/32]);
                                     MyWorld.array[x][y] = temp;
@@ -99,10 +118,12 @@ public class Button extends Actor
                                     //ObjectId[(y-16)/32][(y-16)/32];
                                     //System.out.println(x +" " + y);
                                 }
-                            }
-                           break;
+                       }
+                       break;
         }
         MyWorld.level=L;
+        MyWorld.money=200;
+        MyWorld.lives=20;
         System.out.println("World "+L+" build");
-    }
+    }}
 }

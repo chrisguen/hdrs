@@ -111,7 +111,7 @@ public class MyWorld extends World
         //Tower test1 = new Tower(0);
         //Tower test2 = new Tower(2);
         
-        setBackground("img/background.png");
+        //setBackground("img/background.png");
         buildToolbar();
         Screen t = new Screen("title");
         addObject(t,500,320);
@@ -156,13 +156,13 @@ public class MyWorld extends World
         System.out.println("World "+l+" build");
     }*/
     public void buildToolbar(){
-        Money moneyTest = new Money();
+        Stats Stats = new Stats();
         TowerDesc t1desc = new TowerDesc(0);
         TowerDesc t2desc = new TowerDesc(1);
         TowerDesc t3desc = new TowerDesc(2);
         Starter s = new Starter();
         addObject(s,800,500);
-        addObject(moneyTest, 700,200);
+        addObject(Stats, 830,130);
         addObject(t1desc,800,260);
         addObject(t2desc,800,335);
         addObject(t3desc,800,410);
@@ -176,8 +176,14 @@ public class MyWorld extends World
     public static void nextWave(){
         wave++;
     }
+    public static void setWave(int w){
+        wave = w;
+    }
     public static int getWave(){
         return wave;
+    }
+    public static int getLevel(){
+        return level;
     }
     public static void minusLive(int l){
         lives -= l;

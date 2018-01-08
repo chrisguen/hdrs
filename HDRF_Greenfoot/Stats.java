@@ -6,7 +6,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Money extends Actor
+public class Stats extends Actor
 {
     private GreenfootImage background = new GreenfootImage("img/menu.png");
     long t = 5*60;
@@ -28,7 +28,15 @@ public class Money extends Actor
         if(Starter.isStart()){
             t--;
         }*/
-    }    
+        //getWorld().getObjects(Screen.class)
+        if(MyWorld.getWave()==10){
+            Screen sc = new Screen("stageclear");
+            getWorld().addObject(sc,500,320);
+            Button b = new Button("cont");
+            getWorld().addObject(b,500, 450);
+            MyWorld.setWave(1);
+        }
+     }    
     public void plus200Money(){
         MyWorld.addMoney(200);
     }
@@ -36,7 +44,7 @@ public class Money extends Actor
         List objects = getWorld().getObjects(Floor.class);
         if (objects != null) { getWorld().removeObjects(objects); }
     }
-   public void buildWorld(int l){
+    public void buildWorld(int l){
         //List objects = getWorld().getObjects(Floor.class);
         //if (objects != null) { getWorld().removeObjects(objects); }
         removeFloor();

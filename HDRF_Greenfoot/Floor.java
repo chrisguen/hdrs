@@ -27,7 +27,7 @@ public class Floor extends Actor
     {0,0,0,0},
     {0,0,0,0},
     {0,0,0,0},
-    {0,0,0,0}
+    {-1,-1,-1,-1}
     };
     int id;
     public Floor(int idAusArray){
