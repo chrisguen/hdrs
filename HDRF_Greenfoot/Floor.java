@@ -27,7 +27,6 @@ public class Floor extends Actor
     {0,0,0,0},
     {0,0,0,0},
     {0,0,0,0},
-    {0,0,0,0},
     {0,0,0,0}
     };
     int id;

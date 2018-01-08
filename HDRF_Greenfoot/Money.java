@@ -16,7 +16,10 @@ public class Money extends Actor
     public void act() 
     {
         if(Greenfoot.mouseClicked(this)){
-            plus200Money();
+            //plus200Money();
+            MyWorld world = new MyWorld();
+            world.buildWorld(MyWorld.Level1,1);
+            System.out.println("click");
         }
         getImage().scale(119,68);
         getImage().clear();

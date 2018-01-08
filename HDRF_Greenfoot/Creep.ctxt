@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=Creep
-comment0.text=\n\ Write\ a\ description\ of\ class\ Creep\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Creep\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=i
 comment1.target=Creep(int)
 comment2.params=dmg
 comment2.target=void\ hit(double)
-comment2.text=Creep(int\ i,\ int\ h,\ int\ s,\ float\ ar,\ float\ ur,\ int\ md){\n\ \ \ \ \ \ \ \ cId\ \=\ i;\n\ \ \ \ \ \ \ \ health\ \=\ h;\n\ \ \ \ \ \ \ \ speed\ \=\ s;\n\ \ \ \ \ \ \ \ vehicleDmgMultiplier\ \=\ ar;\n\ \ \ \ \ \ \ \ Resistance\ \=\ ur;\n\ \ \ \ \ \ \ \ moneyDropped\ \=\ md;\n}
+comment2.text=Creep(int\ i,\ int\ h,\ int\ s,\ float\ ar,\ float\ ur,\ int\ md){\r\n\ \ \ \ \ \ \ \ cId\ \=\ i;\r\n\ \ \ \ \ \ \ \ health\ \=\ h;\r\n\ \ \ \ \ \ \ \ speed\ \=\ s;\r\n\ \ \ \ \ \ \ \ vehicleDmgMultiplier\ \=\ ar;\r\n\ \ \ \ \ \ \ \ Resistance\ \=\ ur;\r\n\ \ \ \ \ \ \ \ moneyDropped\ \=\ md;\r\n}
 comment3.params=
 comment3.target=void\ placeHealthBar()
 comment4.params=
 comment4.target=int\ getId()
 comment5.params=
 comment5.target=void\ act()
-comment5.text=\n\ Act\ -\ do\ whatever\ the\ Creep\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment5.text=\r\n\ Act\ -\ do\ whatever\ the\ Creep\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 numComments=6

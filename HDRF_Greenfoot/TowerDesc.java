@@ -22,10 +22,13 @@ public class TowerDesc extends Actor
         getImage().drawString("Tower: "+id, 10, 20);
         switch(id){
             case 0: getImage().drawString("Cost: "+60, 10, 35);
-            if(MyWorld.getMoney()<60)getImage().drawString("Not enough money!",10,60);
+            if(MyWorld.getMoney()<MyWorld.getTowerPrice(0))getImage().drawString("Nicht genug Geld!",10,60);
             break;
             case 1: getImage().drawString("Cost: "+40, 10, 35);
-            if(MyWorld.getMoney()<40)getImage().drawString("Not enough money!",10,60);
+            if(MyWorld.getMoney()<MyWorld.getTowerPrice(1))getImage().drawString("Nicht genug Geld!",10,60);
+            break;
+            case 2: getImage().drawString("Cost: "+100, 10, 35);
+            if(MyWorld.getMoney()<MyWorld.getTowerPrice(2))getImage().drawString("Nicht genug Geld!",10,60);
             break;
         } 
     }    
