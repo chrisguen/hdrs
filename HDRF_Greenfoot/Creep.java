@@ -21,18 +21,18 @@ public class Creep extends Actor
         switch(i){
             case 0:  speed = 2;
                      vehicleDmgMultiplier = 1;
-                     health = MyWorld.getWave()*10+100;
+                     health = (MyWorld.getWave()-1)*10+100;
                      setImage("img/soldier1.png");
                      break;
                      
             case 1:  speed = 1;
                      vehicleDmgMultiplier = 0.8;
-                     health = MyWorld.getWave()*10+200;
+                     health = (MyWorld.getWave()-1)*10+200;
                      setImage("img/tank.png");
                      break;
                      
             case 2:  speed = 1;
-                     health = MyWorld.getWave()*10+150;
+                     health = (MyWorld.getWave()-1)*10+150;
                      setImage("img/plane.png");
                      break;
                      
@@ -172,12 +172,15 @@ public class Creep extends Actor
         }}
         
         if(getWorld()!=null){
-            List bulletInRange = getObjectsInRange(15,Bullet.class);
+            List bulletInRange = getObjectsInRange(20,Bullet.class);
             if(bulletInRange.isEmpty()==false){
                 if(bulletInRange.get(0)!=null){
                     Bullet temp = (Bullet)bulletInRange.get(0);
                     World world = getWorld();
                     hit(temp.getDmg());
+                    /*switch(cId){
+                        case 0:     temp.getId()
+                    }*/
                     //System.out.println("dmg: "+temp.getDmg());
                     world.removeObject(temp);
                 }

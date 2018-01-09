@@ -28,13 +28,13 @@ public class Tower extends Actor
         }
         tId = id;
     }
-    private boolean isGrabbed, dragAllowed, buyAllowed, placed, timer0, timer1;
+    private boolean isGrabbed, dragAllowed, buyAllowed, placed, timer0, timer1, timer2;
    
     public void act()
       {
         boolean d = false;
         timer = timer + 2;
-        if (timer % 100 == 0){
+        if (timer % 70 == 0){
             timer0 = true;
         }else{
             timer0 =false;
@@ -44,7 +44,12 @@ public class Tower extends Actor
         }else{
             timer1 =false;
         }
-        List creepsInRange = getObjectsInRange(100,Creep.class);
+        if (timer % 200 == 0){
+            timer2 = true;
+        }else{
+            timer2 =false;
+        }
+        List creepsInRange;
         switch(tId){
             case 0:     creepsInRange = getObjectsInRange(120,Creep.class);
                         if(placed && creepsInRange.isEmpty()==false){
@@ -126,12 +131,12 @@ public class Tower extends Actor
                             }
                         }
                         if(placed && creepsInRange.isEmpty()==false){
-                            if(timer1 && placed && creepsInRange.get(0)!=null){
+                            if(timer2 && placed && creepsInRange.get(0)!=null){
                                 Creep temp = (Creep)creepsInRange.get(0);
                                 if(temp.getId()!=2){
                                     tmpCreepX = temp.getX();
                                     tmpCreepY = temp.getY();
-                                    Bullet b = new Bullet(tId,tmpCreepX, tmpCreepY, getRotation(),20.0);
+                                    Bullet b = new Bullet(tId,tmpCreepX, tmpCreepY, getRotation(),80.0);
                                     World world = getWorld();
                                     world.addObject(b,this.getX(),this.getY());
                                     //System.out.println("NEW BULLET1 at: "+tmpCreepX +" "+ tmpCreepY);
@@ -195,7 +200,7 @@ public class Tower extends Actor
         {
             // release the object
             MouseInfo mi = Greenfoot.getMouseInfo();
-            if(mi.getX()<608){
+            if(mi.getX()<660){
                 int floorId = MyWorld.getObjectId((this.getX()-16)/32,(this.getY()-16)/32);
                 //System.out.println(((this.getX()-16)/32));
                 //System.out.println(((this.getY()-16)/32));
@@ -208,7 +213,11 @@ public class Tower extends Actor
                     MyWorld.addMoney(-(MyWorld.getTowerPrice(tId)));
                 }
                 //System.out.println("tID: " + tId + " | x,y: " + x + "-" + y + " | floortype2: " + floorId);
-            } 
+            }else{
+                World world = getWorld();
+                world.removeObject(this);
+                Tower tower = new Tower(tId);
+            }
             isGrabbed = false;
             placed = true;
         }

@@ -64,4 +64,7 @@ public class Bullet extends Actor
     public double getDmg(){
         return dmg;
     }
+    public int getId(){
+        return id;
+    }
 }

@@ -14,7 +14,9 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public static int lives = 20;
+    public static boolean init = true;
+    
+    public static int lives = 10;
     
     public static int wave = 1;
     
@@ -112,12 +114,14 @@ public class MyWorld extends World
         //Tower test2 = new Tower(2);
         
         //setBackground("img/background.png");
+        Greenfoot.setSpeed(50);
         buildToolbar();
         Screen t = new Screen("title");
         addObject(t,500,320);
         Button button = new Button("play");
         addObject(button, 500,470);
-        //System.out.println("Setup complete");
+        Floor.resetWavex();
+        System.out.println("Setup complete");
     }
     
     /*public static void buildWorld(int l){
@@ -160,15 +164,16 @@ public class MyWorld extends World
         TowerDesc t1desc = new TowerDesc(0);
         TowerDesc t2desc = new TowerDesc(1);
         TowerDesc t3desc = new TowerDesc(2);
-        Starter s = new Starter();
+        Button s = new Button("start");
         addObject(s,800,500);
         addObject(Stats, 830,130);
         addObject(t1desc,800,260);
         addObject(t2desc,800,335);
         addObject(t3desc,800,410);
-        newTower(0);
-        newTower(1);
-        newTower(2);
+        //newTower(0);
+        //newTower(1);
+        //newTower(2);
+        System.out.println("Toolbar build");
     }
     public static void setLevel(int l){
         level = l;
@@ -177,10 +182,11 @@ public class MyWorld extends World
         wave++;
     }
     public static void setWave(int w){
+        //System.out.println("Set wave: "+w);
         wave = w;
     }
     public static int getWave(){
-        return wave;
+       return wave;
     }
     public static int getLevel(){
         return level;

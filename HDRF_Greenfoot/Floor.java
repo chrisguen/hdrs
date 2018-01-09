@@ -18,16 +18,16 @@ public class Floor extends Actor
     static boolean cd5s = false;
     static boolean cd5ss = false;
     static  int[][] creepCount = new  int[][]{
-    {2,2,2,0},
-    {1,3,1,0},
-    {2,2,2,0},
-    {0,0,0,0},
-    {0,0,0,0},
-    {0,0,0,0},
-    {0,0,0,0},
-    {0,0,0,0},
-    {0,0,0,0},
-    {-1,-1,-1,-1}
+    {3,0,0},
+    {10,2,3},
+    {0,3,0},
+    {0,6,0},
+    {3,3,0},
+    {6,6,0},
+    {0,0,3},
+    {3,3,3},
+    {6,3,3},
+    {6,6,6}
     };
     int id;
     public Floor(int idAusArray){
@@ -48,12 +48,11 @@ public class Floor extends Actor
     }
     /**
      * Act - do whatever the Floor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * the 'Act' or 'Run' button gets pressed in the environment
      */
     public void act() 
     { 
-        if(id==0&&Starter.isStart()){
-           
+        if(id==0&&Button.isStart()){
            /*if((Starter.isStart()==false) && !cd5s){
                 cd = System.currentTimeMillis();
                 cd5s = true;
@@ -65,13 +64,14 @@ public class Floor extends Actor
             //List creepInRange = getObjectsInRange(100,Creep.class);
            if(timer%60==0){
                for(int i = 0;i<10;i++){
-                   if(MyWorld.getWave()==i){
-                        for(int j = 0;j<4;j++){
-                            if(creepCount[i][j]>0){
+                   if((MyWorld.getWave())==i){
+                        for(int j = 0;j<3;j++){
+                            if(creepCount[i-1][j]>0){
                                 Creep c = new Creep(j);
                                 world.addObject(c,getX(),getY());
                                 c.placeHealthBar();
-                                creepCount[i][j] -= 1;
+                                creepCount[i-1][j] -= 1;
+                                //System.out.println("crep spawned, id: "+j+"i: "+i);
                                 break;
                             }else {
                                 spawned=true;
@@ -81,15 +81,27 @@ public class Floor extends Actor
                }
            }
            List objects = world.getObjects(Creep.class);
-           if((objects.isEmpty()&&spawned&&Starter.isStart())){
+           if((objects.isEmpty()&&spawned&&Button.isStart())){
                MyWorld.nextWave();
                spawned = false;
-               Starter.stop();
+               Button.stop();
+               Stats.t = 50*10;
            }
             //System.out.println(System.currentTimeMillis());
         }
     }    
-    public static void resetWave(){
-
+    public static void resetWavex(){
+        creepCount = new int[][]{
+            {3,0,0},
+            {10,2,3},
+            {0,3,0},
+            {0,6,0},
+            {3,3,0},
+            {6,6,0},
+            {0,0,3},
+            {3,3,3},
+            {6,3,3},
+            {6,6,6}
+        };
     }
 }

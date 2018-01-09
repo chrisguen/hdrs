@@ -21,12 +21,13 @@ public class Screen extends Actor
                             break;
             case "stageclear":      setImage("img/stageclear.png");
                             break;    
-            case "youdied":      setImage("img/youdied.png");
+            case "rip": setImage("img/youdied.png");
+                            
                             break;
         }
     }
     public void act() 
     {
-        
+        getWorld().removeObjects(getWorld().getObjects(Creep.class));
     }    
 }
