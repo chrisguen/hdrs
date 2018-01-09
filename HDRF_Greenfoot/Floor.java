@@ -19,7 +19,7 @@ public class Floor extends Actor
     static boolean cd5ss = false;
     static  int[][] creepCount = new  int[][]{
     {3,0,0},
-    {10,2,3},
+    {6,0,0},
     {0,3,0},
     {0,6,0},
     {3,3,0},
@@ -93,7 +93,7 @@ public class Floor extends Actor
     public static void resetWavex(){
         creepCount = new int[][]{
             {3,0,0},
-            {10,2,3},
+            {6,0,0},
             {0,3,0},
             {0,6,0},
             {3,3,0},

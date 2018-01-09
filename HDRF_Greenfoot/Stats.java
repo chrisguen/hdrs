@@ -22,7 +22,7 @@ public class Stats extends Actor
         getImage().drawString("Wave: "+MyWorld.getWave(), 10, 25);
         getImage().drawString("Lives: "+ MyWorld.getLives(), 10, 40);
         getImage().drawString("Money: "+ MyWorld.getMoney(), 10, 55);
-        getImage().drawString("start: "+ Button.isStart(), 10, 70);
+        //getImage().drawString("start: "+ Button.isStart(), 10, 70);
         getImage().drawString("Next Wave in: "+ t/60+"s", 10, 80);
         if(!Button.isStart()&&t>0&&!MyWorld.init){
             t--;
